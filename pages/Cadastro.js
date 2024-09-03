@@ -1,102 +1,89 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Alert, ImageBackground } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
+
+
 
 export default function Cadastro() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [passwordVisible, setPasswordVisible] = useState(false);
   const navigation = useNavigation();
 
-  const togglePasswordVisibility = () => {
-    setPasswordVisible(!passwordVisible);
+  const handleRegister = async () => {
+    if (name && email && password) {
+      const userData = { name, email, password };
+      await AsyncStorage.setItem('user', JSON.stringify(userData));
+      Alert.alert('Sucesso', 'Cadastro realizado com sucesso!', [
+        { text: 'OK', onPress: () => navigation.navigate('Home') },
+      ]);
+    } else {
+      Alert.alert('Erro', 'Por favor, preencha todos os campos');
+    }
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Crie sua conta</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Nome"
-        value={name}
-        onChangeText={setName}
-        autoCapitalize="words"
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Email"
-        value={email}
-        onChangeText={setEmail}
-        keyboardType="email-address"
-        autoCapitalize="none"
-      />
-      <View style={styles.passwordContainer}>
+      <View style={styles.container}>
+        <Text style={styles.title}>Cadastro</Text>
         <TextInput
-          style={styles.inputSenha}
+          style={styles.input}
+          placeholder="Nome"
+          value={name}
+          onChangeText={setName}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Email"
+          value={email}
+          onChangeText={setEmail}
+          keyboardType="email-address"
+          autoCapitalize="none"
+        />
+        <TextInput
+          style={styles.input}
           placeholder="Senha"
           value={password}
           onChangeText={setPassword}
-          secureTextEntry={!passwordVisible}
+          secureTextEntry
         />
-        <TouchableOpacity onPress={togglePasswordVisibility} style={styles.eyeIcon}>
-          <Text>{passwordVisible ? '👁️' : '🙈'}</Text>
+        <TouchableOpacity style={styles.button} onPress={handleRegister}>
+          <Text style={styles.buttonText}>Cadastrar</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Home')} style={styles.linkButton}>
+          <Text style={styles.linkText}>Já possui cadastro? Entre aqui</Text>
         </TouchableOpacity>
       </View>
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Cadastrar</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate('Home')} style={styles.linkButton}>
-        <Text style={styles.linkText}>Já possui cadastro? Entre aqui</Text>
-      </TouchableOpacity>
-    </View>
   );
 }
 
 const styles = StyleSheet.create({
+  
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
     alignItems: 'center',
     justifyContent: 'center',
     padding: 20,
   },
   title: {
-    fontSize: 24,
+    fontSize: 40,
     marginBottom: 20,
     fontWeight: 'bold',
+    color: '#000000', 
   },
   input: {
-    width: '30%',
+    width: '80%', 
     padding: 10,
     marginVertical: 10,
     borderWidth: 1,
     borderColor: '#ccc',
     borderRadius: 5,
     backgroundColor: '#fff',
-  },
-  inputSenha: {
-    width: '100%',
-    padding: 10,
-    marginVertical: 10,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 5,
-    backgroundColor: '#fff',
-  },
-  passwordContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    width: '30%',
-  },
-  eyeIcon: {
-    position: 'absolute',
-    right: 10,
   },
   button: {
-    width: '10%',
+    width: '80%', 
     padding: 15,
-    backgroundColor: '#28a745',
+    backgroundColor: '#007BFF',
     borderRadius: 5,
     alignItems: 'center',
     marginTop: 20,

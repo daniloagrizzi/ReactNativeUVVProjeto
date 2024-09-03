@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, ImageBackground } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Alert, ImageBackground } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
-
 
 const backgroundImage = require('../assets/d2jzofu-6db51cc4-dbbb-4a73-a0d5-347510e7b241.png');
 
@@ -13,6 +13,20 @@ export default function Home() {
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
+  };
+
+  const handleLogin = async () => {
+    const userData = await AsyncStorage.getItem('user');
+    if (userData) {
+      const { email: storedEmail, password: storedPassword, name } = JSON.parse(userData);
+      if (email === storedEmail && password === storedPassword) {
+        navigation.navigate('Welcome', { name });
+      } else {
+        Alert.alert('Erro', 'Email ou senha incorretos.');
+      }
+    } else {
+      Alert.alert('Erro', 'Nenhum usuário cadastrado.');
+    }
   };
 
   return (
@@ -39,7 +53,7 @@ export default function Home() {
             <Text>{passwordVisible ? '👁️' : '🙈'}</Text>
           </TouchableOpacity>
         </View>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={handleLogin}>
           <Text style={styles.buttonText}>Entrar</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('Cadastro')} style={styles.linkButton}>
@@ -53,11 +67,11 @@ export default function Home() {
 const styles = StyleSheet.create({
   backgroundImage: {
     flex: 1,
-    resizeMode: 'cover', 
+    resizeMode: 'cover',
   },
   container: {
     flex: 1,
-    backgroundColor: 'transparent', 
+    backgroundColor: 'transparent',
     alignItems: 'center',
     justifyContent: 'center',
     padding: 20,
@@ -66,7 +80,7 @@ const styles = StyleSheet.create({
     fontSize: 40,
     marginBottom: 20,
     fontWeight: 'bold',
-    color: '#fff', 
+    color: '#fff',
   },
   input: {
     width: '30%',
@@ -77,19 +91,14 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     backgroundColor: '#fff',
   },
-  inputSenha: {
-    width: '100%',
+  passwordContainer: {
+    width: '30%',
     padding: 10,
     marginVertical: 10,
     borderWidth: 1,
     borderColor: '#ccc',
     borderRadius: 5,
     backgroundColor: '#fff',
-  },
-  passwordContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    width: '30%',
   },
   eyeIcon: {
     position: 'absolute',
@@ -112,7 +121,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   linkText: {
-    color: '#fff', 
+    color: '#FFF',
     fontSize: 16,
     fontWeight: 'bold',
   },
