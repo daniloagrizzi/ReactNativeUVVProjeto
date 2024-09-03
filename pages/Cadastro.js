@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-export default function App() {
+export default function Cadastro() {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const navigation = useNavigation();
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
@@ -13,7 +15,14 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Cadastro</Text>
+      <Text style={styles.title}>Crie sua conta</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Nome"
+        value={name}
+        onChangeText={setName}
+        autoCapitalize="words"
+      />
       <TextInput
         style={styles.input}
         placeholder="Email"
@@ -34,15 +43,11 @@ export default function App() {
           <Text>{passwordVisible ? '👁️' : '🙈'}</Text>
         </TouchableOpacity>
       </View>
-      <TextInput
-        style={styles.input}
-        placeholder="Confirmar Senha"
-        value={confirmPassword}
-        onChangeText={setConfirmPassword}
-        secureTextEntry={!passwordVisible}
-      />
       <TouchableOpacity style={styles.button}>
         <Text style={styles.buttonText}>Cadastrar</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Home')} style={styles.linkButton}>
+        <Text style={styles.linkText}>Já possui cadastro? Entre aqui</Text>
       </TouchableOpacity>
     </View>
   );
@@ -62,7 +67,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   input: {
-    width: '80%',
+    width: '30%',
     padding: 10,
     marginVertical: 10,
     borderWidth: 1,
@@ -82,16 +87,16 @@ const styles = StyleSheet.create({
   passwordContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    width: '80%',
+    width: '30%',
   },
   eyeIcon: {
     position: 'absolute',
     right: 10,
   },
   button: {
-    width: '80%',
+    width: '10%',
     padding: 15,
-    backgroundColor: '#007BFF',
+    backgroundColor: '#28a745',
     borderRadius: 5,
     alignItems: 'center',
     marginTop: 20,
@@ -100,5 +105,12 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 16,
     fontWeight: 'bold',
+  },
+  linkButton: {
+    marginTop: 20,
+  },
+  linkText: {
+    color: '#007BFF',
+    fontSize: 16,
   },
 });
