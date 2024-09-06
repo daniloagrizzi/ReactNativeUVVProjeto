@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Home from './pages/Home';
 import Cadastro from './pages/Cadastro';
-import Welcome from './pages/Welcome';  // Importando a nova tela de boas-vindas
+import Welcome from './pages/Welcome'; 
 
 const Stack = createStackNavigator();
 
@@ -25,7 +25,7 @@ export default function App() {
         <Stack.Screen 
           name="Welcome" 
           component={Welcome} 
-          options={{ title: 'Bem-vindo' }} // Definindo o título da tela de boas-vindas
+          options={{ title: 'Bem-vindo' }} 
         />
       </Stack.Navigator>
     </NavigationContainer>

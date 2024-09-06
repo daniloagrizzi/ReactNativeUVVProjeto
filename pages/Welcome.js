@@ -3,30 +3,23 @@ import { StyleSheet, Text, View, TouchableOpacity, ImageBackground } from 'react
 import { useNavigation, useRoute } from '@react-navigation/native';
 
 
-const backgroundImage = require('../assets/shrek.jpg');
-
 export default function Welcome() {
   const navigation = useNavigation();
   const route = useRoute();
   const { name } = route.params;
 
   return (
-    <ImageBackground source={backgroundImage} style={styles.backgroundImage}>
       <View style={styles.container}>
         <Text style={styles.title}>Olá, {name}!</Text>
         <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Home')}>
           <Text style={styles.buttonText}>Logout</Text>
         </TouchableOpacity>
       </View>
-    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
-  backgroundImage: {
-    flex: 1,
-    resizeMode: 'cover', 
-  },
+ 
   container: {
     flex: 1,
     alignItems: 'center',

@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity, Alert, ImageBackgr
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 
-const backgroundImage = require('../assets/d2jzofu-6db51cc4-dbbb-4a73-a0d5-347510e7b241.png');
+
 
 export default function Home() {
   const [email, setEmail] = useState('');
@@ -30,7 +30,7 @@ export default function Home() {
   };
 
   return (
-    <ImageBackground source={backgroundImage} style={styles.backgroundImage}>
+
       <View style={styles.container}>
         <Text style={styles.title}>Bem-vindo!</Text>
         <TextInput
@@ -60,15 +60,11 @@ export default function Home() {
           <Text style={styles.linkText}>Crie seu cadastro</Text>
         </TouchableOpacity>
       </View>
-    </ImageBackground>
+   
   );
 }
 
 const styles = StyleSheet.create({
-  backgroundImage: {
-    flex: 1,
-    resizeMode: 'cover',
-  },
   container: {
     flex: 1,
     backgroundColor: 'transparent',
