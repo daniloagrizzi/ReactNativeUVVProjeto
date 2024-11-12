@@ -64,7 +64,6 @@ export default function Home() {
         <Text style={styles.linkText}>Crie seu cadastro</Text>
       </TouchableOpacity>
 
-      {/* Modal de erro */}
       <Modal
         animationType="slide"
         transparent={true}
@@ -76,7 +75,7 @@ export default function Home() {
             <Text style={styles.modalMessage}>{errorMessage}</Text>
             <Pressable
               style={styles.modalButton}
-              onPress={() => setModalVisible(false)} // Fecha o modal
+              onPress={() => setModalVisible(false)} 
             >
               <Text style={styles.modalButtonText}>Fechar</Text>
             </Pressable>
@@ -102,7 +101,7 @@ const styles = StyleSheet.create({
     color: '#fff',
   },
   input: {
-    width: '80%', // Ajuste para melhorar o layout
+    width: '80%', 
     padding: 10,
     marginVertical: 10,
     borderWidth: 1,
