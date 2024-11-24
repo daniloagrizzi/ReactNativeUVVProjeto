@@ -8,7 +8,7 @@ export default function Cadastro() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
-  const [successModalVisible, setSuccessModalVisible] = useState(false); 
+  const [successModalVisible, setSuccessModalVisible] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const navigation = useNavigation();
 
@@ -17,7 +17,7 @@ export default function Cadastro() {
       const userData = { name, email, password };
       try {
         await AsyncStorage.setItem('user', JSON.stringify(userData));
-        setSuccessModalVisible(true); 
+        setSuccessModalVisible(true);
       } catch (error) {
         setErrorMessage('Erro ao salvar dados. Tente novamente.');
         setModalVisible(true);
@@ -69,16 +69,14 @@ export default function Cadastro() {
         <View style={styles.modalBackground}>
           <View style={styles.modalContainer}>
             <Text style={styles.modalMessage}>{errorMessage}</Text>
-            <Pressable
-              style={styles.modalButton}
-              onPress={() => setModalVisible(false)}
-            >
+            <Pressable style={styles.modalButton} onPress={() => setModalVisible(false)}>
               <Text style={styles.modalButtonText}>Fechar</Text>
             </Pressable>
           </View>
         </View>
       </Modal>
 
+      {/* Modal de sucesso */}
       <Modal
         animationType="slide"
         transparent={true}
@@ -88,14 +86,8 @@ export default function Cadastro() {
         <View style={styles.modalBackground}>
           <View style={styles.modalContainer}>
             <Text style={styles.modalMessage}>Cadastro realizado com sucesso!</Text>
-            <Pressable
-              style={styles.modalButton}
-              onPress={() => {
-                setSuccessModalVisible(false);
-                navigation.navigate('Home');
-              }}
-            >
-              <Text style={styles.modalButtonText}>OK</Text>
+            <Pressable style={styles.modalButton} onPress={() => navigation.navigate('Home')}>
+              <Text style={styles.modalButtonText}>Voltar para Login</Text>
             </Pressable>
           </View>
         </View>
@@ -107,44 +99,43 @@ export default function Cadastro() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
     justifyContent: 'center',
-    padding: 20,
+    alignItems: 'center',
+    backgroundColor: '#191919',
+    paddingHorizontal: 20,
   },
   title: {
-    fontSize: 40,
-    marginBottom: 20,
+    fontSize: 30,
+    color: '#FFF',
     fontWeight: 'bold',
-    color: '#000000',
+    marginBottom: 40,
   },
   input: {
-    width: '80%',
+    backgroundColor: '#FFF',
+    width: '90%',
+    marginBottom: 15,
+    color: '#222',
+    fontSize: 22,
+    borderRadius: 7,
     padding: 10,
-    marginVertical: 10,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 5,
-    backgroundColor: '#fff',
   },
   button: {
-    width: '80%',
-    padding: 15,
-    backgroundColor: '#007BFF',
-    borderRadius: 5,
+    backgroundColor: '#59BFFF',
+    width: '90%',
+    height: 45,
     alignItems: 'center',
-    marginTop: 20,
+    justifyContent: 'center',
+    borderRadius: 7,
   },
   buttonText: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: 'bold',
+    color: '#FFF',
+    fontSize: 19,
   },
   linkButton: {
-    marginTop: 20,
+    marginTop: 10,
   },
   linkText: {
-    color: '#007BFF',
-    fontSize: 16,
+    color: '#FFF',
   },
   modalBackground: {
     flex: 1,
@@ -164,13 +155,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#000',
     marginBottom: 20,
-    textAlign: 'center',
   },
   modalButton: {
-    backgroundColor: '#007BFF',
+    backgroundColor: '#59BFFF',
     padding: 10,
     borderRadius: 5,
-    alignItems: 'center',
   },
   modalButtonText: {
     color: '#fff',

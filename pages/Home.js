@@ -36,7 +36,7 @@ export default function Home() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Bem-vindo!</Text>
+      <Text style={styles.title}>Login</Text>
       <TextInput
         style={styles.input}
         placeholder="Email"
@@ -61,9 +61,10 @@ export default function Home() {
         <Text style={styles.buttonText}>Entrar</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate('Cadastro')} style={styles.linkButton}>
-        <Text style={styles.linkText}>Crie seu cadastro</Text>
+        <Text style={styles.linkText}>Não possui cadastro? Crie uma conta</Text>
       </TouchableOpacity>
 
+      {/* Modal de erro */}
       <Modal
         animationType="slide"
         transparent={true}
@@ -73,10 +74,7 @@ export default function Home() {
         <View style={styles.modalBackground}>
           <View style={styles.modalContainer}>
             <Text style={styles.modalMessage}>{errorMessage}</Text>
-            <Pressable
-              style={styles.modalButton}
-              onPress={() => setModalVisible(false)} 
-            >
+            <Pressable style={styles.modalButton} onPress={() => setModalVisible(false)}>
               <Text style={styles.modalButtonText}>Fechar</Text>
             </Pressable>
           </View>
@@ -89,59 +87,63 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'transparent',
-    alignItems: 'center',
     justifyContent: 'center',
-    padding: 20,
+    alignItems: 'center',
+    backgroundColor: '#191919', // Fundo escuro
+    paddingHorizontal: 20,
   },
   title: {
-    fontSize: 40,
-    marginBottom: 20,
+    fontSize: 30,
+    color: '#FFF',
     fontWeight: 'bold',
-    color: '#fff',
+    marginBottom: 40,
   },
   input: {
-    width: '80%', 
+    backgroundColor: '#FFF',
+    width: '90%',
+    marginBottom: 15,
+    color: '#222',
+    fontSize: 22,
+    borderRadius: 7,
     padding: 10,
-    marginVertical: 10,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 5,
-    backgroundColor: '#fff',
   },
   passwordContainer: {
-    width: '80%',
+    width: '90%',
+    marginBottom: 15,
+    position: 'relative',
+  },
+  inputSenha: {
+    backgroundColor: '#FFF',
+    width: '100%',
+    fontSize: 22,
+    color: '#222',
+    borderRadius: 7,
     padding: 10,
-    marginVertical: 10,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 5,
-    backgroundColor: '#fff',
   },
   eyeIcon: {
     position: 'absolute',
     right: 10,
+    top: 12,
   },
   button: {
-    width: '80%',
-    padding: 15,
-    backgroundColor: '#007BFF',
-    borderRadius: 5,
+    backgroundColor: '#59BFFF',
+    width: '90%',
+    height: 45,
     alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 7,
     marginTop: 20,
   },
   buttonText: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: 'bold',
+    color: '#FFF',
+    fontSize: 19,
   },
   linkButton: {
-    marginTop: 20,
+    marginTop: 10,
   },
   linkText: {
     color: '#FFF',
     fontSize: 16,
-    fontWeight: 'bold',
   },
   modalBackground: {
     flex: 1,
@@ -163,7 +165,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   modalButton: {
-    backgroundColor: '#007BFF',
+    backgroundColor: '#59BFFF',
     padding: 10,
     borderRadius: 5,
   },
