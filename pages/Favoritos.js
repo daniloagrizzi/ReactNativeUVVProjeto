@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, Alert, StyleSheet } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native'; // Hook para navegação
-import CardItem from './CardItem'; // Importando o CardItem
+import CardItem from '../Components/CardItem'; // Importando o CardItem
 
 export default function Favoritos() {
   const navigation = useNavigation(); // Usando o hook para navegação

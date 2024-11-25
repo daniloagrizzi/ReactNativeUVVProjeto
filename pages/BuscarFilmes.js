@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, FlatList, TextInput, TouchableOpacity } from 'react-native';
-import CardItem from './CardItem'; // Importar o componente Card
+import CardItem from '../Components/CardItem'; // Importar o componente Card
 import { useNavigation } from '@react-navigation/native';
 
 export default function BuscarFilmes() {

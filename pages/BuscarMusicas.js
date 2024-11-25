@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, FlatList, TextInput, TouchableOpacity } from 'react-native';
-import CardItem from './CardItem'; // O componente de Card que criamos anteriormente
+import CardItem from '../Components/CardItem'; // O componente de Card que criamos anteriormente
 import { useNavigation } from '@react-navigation/native';
 
 export default function BuscarMusicas() {

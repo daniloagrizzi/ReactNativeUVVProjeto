@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, FlatList, TextInput, TouchableOpacity, ActivityIndicator } from 'react-native';
-import CardItem from './CardItem'; // Componente de Card
+import CardItem from '../Components/CardItem'; // Componente de Card
 import { useNavigation } from '@react-navigation/native';
 
 export default function BuscarLivros() {
