@@ -1,15 +1,4 @@
-Documentação Completa do Projeto - MyFavs
-Visão Geral
-O MyFavs é um aplicativo desenvolvido em React Native com o framework Expo, projetado para permitir que os usuários adicionem, removam e avaliem seus itens favoritos, como músicas, filmes e livros. O aplicativo usa o React Navigation para navegação entre telas e o AsyncStorage para persistência de dados, garantindo que as preferências dos usuários sejam armazenadas localmente.
-Funcionalidades
-O aplicativo inclui várias funcionalidades que tornam a navegação e o gerenciamento de favoritos intuitivos:
-Tela Inicial (Welcome): Apresenta ao usuário opções para explorar itens de diferentes categorias, como músicas, filmes, livros e favoritos.
-Tela de Cadastro: Permite que o usuário se registre informando nome, e-mail e senha.
-Tela de Login: Permite que o usuário faça login usando e-mail e senha cadastrados.
-Componente de Card de Item: Exibe informações detalhadas sobre itens, como nome, artista e imagem de capa. Ao clicar no card, o usuário é levado para a tela de detalhes do item.
-Tela de Detalhes do Item: Exibe mais informações sobre o item selecionado e permite ao usuário avaliá-lo com estrelas e adicioná-lo ou removê-lo dos favoritos.
-Tela de Favoritos: Exibe todos os itens que o usuário adicionou à sua lista de favoritos. O usuário pode remover itens conforme necessário.
-Tela de Busca de Filmes, Livros e Músicas: Permite ao usuário pesquisar por diferentes tipos de itens e visualizar os resultados da pesquisa.
+
 Requisitos
 Antes de iniciar a instalação e execução do projeto, verifique se você possui os seguintes pré-requisitos:
 Node.js: Recomendamos a versão 16.x.x ou superior. Para verificar a versão instalada, use o comando:
