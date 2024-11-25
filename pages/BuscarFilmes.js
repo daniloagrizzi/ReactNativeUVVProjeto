@@ -1,4 +1,3 @@
-// BuscarFilmes.js
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, FlatList, TextInput, TouchableOpacity } from 'react-native';
 import CardItem from './CardItem'; // Importar o componente Card
@@ -41,6 +40,7 @@ export default function BuscarFilmes() {
       <TextInput
         style={styles.input}
         placeholder="Digite o nome do filme"
+        placeholderTextColor="#adb5bd"
         value={query}
         onChangeText={setQuery}
         onSubmitEditing={handleSearch}
@@ -50,7 +50,7 @@ export default function BuscarFilmes() {
       </TouchableOpacity>
 
       {loading ? (
-        <Text>Carregando filmes...</Text>
+        <Text style={styles.loadingText}>Carregando filmes...</Text>
       ) : (
         <FlatList
           data={filmes}
@@ -58,6 +58,7 @@ export default function BuscarFilmes() {
           renderItem={({ item }) => (
             <CardItem item={item} onPress={handleCardPress} />
           )}
+          contentContainerStyle={styles.list}
         />
       )}
     </View>
@@ -67,35 +68,48 @@ export default function BuscarFilmes() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#212529', // Fundo escuro
     padding: 20,
-    backgroundColor: '#191919',
+    alignItems: 'center',
   },
   title: {
-    fontSize: 30,
-    color: '#FFF',
+    fontSize: 28,
+    color: '#f8f9fa', // Branco suave
     fontWeight: 'bold',
     marginBottom: 20,
   },
   input: {
-    backgroundColor: '#FFF',
+    backgroundColor: '#495057', // Cinza escuro
+    color: '#f8f9fa',
     width: '90%',
-    padding: 10,
-    borderRadius: 7,
-    fontSize: 18,
-    marginBottom: 10,
+    padding: 12,
+    borderRadius: 8,
+    fontSize: 16,
+    marginBottom: 12,
   },
   searchButton: {
-    backgroundColor: '#59BFFF',
-    padding: 10,
+    backgroundColor: '#adb5bd', // Cinza claro
+    padding: 12,
     width: '90%',
-    borderRadius: 7,
-    marginBottom: 20,
+    borderRadius: 8,
     alignItems: 'center',
+    marginBottom: 20,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 3,
   },
   buttonText: {
-    color: '#FFF',
+    color: '#212529', // Preto suave para contraste
     fontSize: 18,
+    fontWeight: 'bold',
+  },
+  loadingText: {
+    color: '#f8f9fa', // Texto branco
+    fontSize: 16,
+    marginTop: 20,
+  },
+  list: {
+    paddingTop: 10,
   },
 });

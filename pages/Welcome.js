@@ -1,34 +1,46 @@
-// Welcome.js
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 export default function Welcome() {
   const navigation = useNavigation();
+  const route = useRoute();
+  const { name } = route.params;
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Bem-vindo!</Text>
+      <Text style={styles.title}>Olá, {name}! O que você deseja explorar hoje? 🌟</Text>
 
       <TouchableOpacity
-        style={styles.button}
-        onPress={() => navigation.navigate('BuscarFilmes')}
-      >
-        <Text style={styles.buttonText}>Buscar Filmes</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        style={styles.button}
+        style={styles.optionButton}
         onPress={() => navigation.navigate('BuscarMusicas')}
       >
-        <Text style={styles.buttonText}>Buscar Músicas</Text>
+        <Text style={styles.optionText}>🎵 Buscar Músicas</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
-        style={styles.button}
+        style={styles.optionButton}
+        onPress={() => navigation.navigate('BuscarFilmes')}
+      >
+        <Text style={styles.optionText}>🎬 Buscar Filmes</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={styles.optionButton}
         onPress={() => navigation.navigate('BuscarLivros')}
       >
-        <Text style={styles.buttonText}>Buscar Livros</Text>
+        <Text style={styles.optionText}>📚 Buscar Livros</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={styles.optionButton}
+        onPress={() => navigation.navigate('Favoritos')}  // Navegando para a tela de Favoritos
+      >
+        <Text style={styles.optionText}>⭐ Meus Favoritos</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.logoutButton} onPress={() => navigation.navigate('Home')}>
+        <Text style={styles.logoutText}>Logout</Text>
       </TouchableOpacity>
     </View>
   );
@@ -37,27 +49,40 @@ export default function Welcome() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#212529',
     padding: 20,
-    backgroundColor: '#191919',
   },
   title: {
-    fontSize: 30,
-    color: '#FFF',
+    fontSize: 24,
+    color: '#f8f9fa',
     fontWeight: 'bold',
+    marginBottom: 40,
+    textAlign: 'center',
+  },
+  optionButton: {
+    width: '90%',
+    padding: 15,
+    backgroundColor: '#adb5bd',
+    borderRadius: 10,
+    alignItems: 'center',
     marginBottom: 20,
   },
-  button: {
-    backgroundColor: '#59BFFF',
-    padding: 10,
-    width: '90%',
-    borderRadius: 7,
-    alignItems: 'center',
-    marginTop: 10,
-  },
-  buttonText: {
-    color: '#FFF',
+  optionText: {
+    color: '#212529',
     fontSize: 18,
+    fontWeight: 'bold',
+  },
+  logoutButton: {
+    marginTop: 30,
+    padding: 10,
+    backgroundColor: '#ef233c',
+    borderRadius: 10,
+  },
+  logoutText: {
+    color: '#FFF',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });

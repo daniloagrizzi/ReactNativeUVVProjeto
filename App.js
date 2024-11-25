@@ -10,6 +10,7 @@ import BuscarFilmes from './pages/BuscarFilmes';
 import BuscarMusicas from './pages/BuscarMusicas';
 import BuscarLivros from './pages/BuscarLivros';
 import DetalhesItem from './pages/DetalhesItem';
+import Favoritos from './pages/Favoritos';
 
 const Stack = createStackNavigator();
 
@@ -24,6 +25,8 @@ export default function App() {
         <Stack.Screen name="BuscarMusicas" component={BuscarMusicas} options={{ title: 'Buscar Músicas' }} />
         <Stack.Screen name="BuscarLivros" component={BuscarLivros} options={{ title: 'Buscar Livros' }} />
         <Stack.Screen name="DetalhesItem" component={DetalhesItem} options={{ title: 'Detalhes' }} />
+        <Stack.Screen name="Favoritos" component={Favoritos} options={{ title: 'Favoritos' }} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );

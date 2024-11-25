@@ -89,22 +89,22 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#191919', // Fundo escuro
+    backgroundColor: '#212529',
     paddingHorizontal: 20,
   },
   title: {
     fontSize: 30,
-    color: '#FFF',
+    color: '#f8f9fa',
     fontWeight: 'bold',
     marginBottom: 40,
   },
   input: {
-    backgroundColor: '#FFF',
+    backgroundColor: '#495057',
     width: '90%',
     marginBottom: 15,
-    color: '#222',
-    fontSize: 22,
-    borderRadius: 7,
+    color: '#f8f9fa',
+    fontSize: 18,
+    borderRadius: 10,
     padding: 10,
   },
   passwordContainer: {
@@ -113,11 +113,11 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   inputSenha: {
-    backgroundColor: '#FFF',
+    backgroundColor: '#495057',
     width: '100%',
-    fontSize: 22,
-    color: '#222',
-    borderRadius: 7,
+    fontSize: 18,
+    color: '#f8f9fa',
+    borderRadius: 10,
     padding: 10,
   },
   eyeIcon: {
@@ -126,12 +126,12 @@ const styles = StyleSheet.create({
     top: 12,
   },
   button: {
-    backgroundColor: '#59BFFF',
+    backgroundColor: '#ffc300',
     width: '90%',
     height: 45,
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 7,
+    borderRadius: 10,
     marginTop: 20,
   },
   buttonText: {
@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   linkText: {
-    color: '#FFF',
+    color: '#dee2e6',
     fontSize: 16,
   },
   modalBackground: {
@@ -154,24 +154,24 @@ const styles = StyleSheet.create({
   modalContainer: {
     width: '80%',
     padding: 20,
-    backgroundColor: '#fff',
+    backgroundColor: '#343a40',
     borderRadius: 10,
     alignItems: 'center',
   },
   modalMessage: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#000',
+    color: '#f8f9fa',
     marginBottom: 20,
   },
   modalButton: {
-    backgroundColor: '#59BFFF',
+    backgroundColor: '#ef233c',
     padding: 10,
-    borderRadius: 5,
+    borderRadius: 10,
   },
   modalButtonText: {
-    color: '#fff',
-    fontSize: 16,
+    color: '#FFF',
+    fontSize: 18,
     fontWeight: 'bold',
   },
 });

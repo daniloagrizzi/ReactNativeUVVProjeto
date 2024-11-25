@@ -59,7 +59,6 @@ export default function Cadastro() {
         <Text style={styles.linkText}>Já possui cadastro? Entre aqui</Text>
       </TouchableOpacity>
 
-      {/* Modal de erro */}
       <Modal
         animationType="slide"
         transparent={true}
@@ -76,7 +75,6 @@ export default function Cadastro() {
         </View>
       </Modal>
 
-      {/* Modal de sucesso */}
       <Modal
         animationType="slide"
         transparent={true}
@@ -86,8 +84,14 @@ export default function Cadastro() {
         <View style={styles.modalBackground}>
           <View style={styles.modalContainer}>
             <Text style={styles.modalMessage}>Cadastro realizado com sucesso!</Text>
-            <Pressable style={styles.modalButton} onPress={() => navigation.navigate('Home')}>
-              <Text style={styles.modalButtonText}>Voltar para Login</Text>
+            <Pressable
+              style={styles.modalButton}
+              onPress={() => {
+                setSuccessModalVisible(false);
+                navigation.navigate('Home');
+              }}
+            >
+              <Text style={styles.modalButtonText}>OK</Text>
             </Pressable>
           </View>
         </View>
@@ -101,31 +105,32 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#191919',
+    backgroundColor: '#212529',
     paddingHorizontal: 20,
   },
   title: {
     fontSize: 30,
-    color: '#FFF',
+    color: '#f8f9fa',
     fontWeight: 'bold',
     marginBottom: 40,
   },
   input: {
-    backgroundColor: '#FFF',
+    backgroundColor: '#495057',
     width: '90%',
     marginBottom: 15,
-    color: '#222',
-    fontSize: 22,
-    borderRadius: 7,
+    color: '#f8f9fa',
+    fontSize: 18,
+    borderRadius: 10,
     padding: 10,
   },
   button: {
-    backgroundColor: '#59BFFF',
+    backgroundColor: '#ffc300',
     width: '90%',
     height: 45,
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 7,
+    borderRadius: 10,
+    marginTop: 20,
   },
   buttonText: {
     color: '#FFF',
@@ -135,7 +140,8 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   linkText: {
-    color: '#FFF',
+    color: '#dee2e6',
+    fontSize: 16,
   },
   modalBackground: {
     flex: 1,
@@ -146,24 +152,24 @@ const styles = StyleSheet.create({
   modalContainer: {
     width: '80%',
     padding: 20,
-    backgroundColor: '#fff',
+    backgroundColor: '#343a40',
     borderRadius: 10,
     alignItems: 'center',
   },
   modalMessage: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#000',
+    color: '#f8f9fa',
     marginBottom: 20,
   },
   modalButton: {
-    backgroundColor: '#59BFFF',
+    backgroundColor: '#ef233c',
     padding: 10,
-    borderRadius: 5,
+    borderRadius: 10,
   },
   modalButtonText: {
-    color: '#fff',
-    fontSize: 16,
+    color: '#FFF',
+    fontSize: 18,
     fontWeight: 'bold',
   },
 });
