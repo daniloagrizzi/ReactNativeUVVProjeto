@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, FlatList, TextInput, TouchableOpacity, ActivityIndicator } from 'react-native';
-import CardItem from '../Components/CardItem'; // Componente de Card
+import CardItem from '../Components/CardItem'; 
 import { useNavigation } from '@react-navigation/native';
 
 export default function BuscarLivros() {
@@ -84,18 +84,18 @@ export default function BuscarLivros() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#212529', // Fundo escuro
+    backgroundColor: '#212529', 
     padding: 20,
     alignItems: 'center',
   },
   title: {
     fontSize: 28,
-    color: '#f8f9fa', // Branco suave
+    color: '#f8f9fa', 
     fontWeight: 'bold',
     marginBottom: 20,
   },
   input: {
-    backgroundColor: '#495057', // Cinza escuro
+    backgroundColor: '#495057', 
     color: '#f8f9fa',
     width: '90%',
     padding: 12,
@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   searchButton: {
-    backgroundColor: '#adb5bd', // Cinza claro
+    backgroundColor: '#adb5bd',
     padding: 12,
     width: '90%',
     borderRadius: 8,
@@ -116,22 +116,22 @@ const styles = StyleSheet.create({
     shadowRadius: 3,
   },
   buttonText: {
-    color: '#212529', // Preto suave para contraste
+    color: '#212529', 
     fontSize: 18,
     fontWeight: 'bold',
   },
   loadingText: {
-    color: '#f8f9fa', // Texto branco
+    color: '#f8f9fa', 
     fontSize: 16,
     marginTop: 20,
   },
   errorText: {
-    color: '#e74c3c', // Vermelho para erros
+    color: '#e74c3c',
     fontSize: 16,
     marginTop: 20,
   },
   noResultsText: {
-    color: '#f8f9fa', // Texto informando que não há resultados
+    color: '#f8f9fa', 
     fontSize: 16,
     marginTop: 20,
   },
